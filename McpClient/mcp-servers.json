@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "inventory-erp": {
+      "type": "streamable",
+      "url": "http://localhost:5007"
+    }
+  }
+}

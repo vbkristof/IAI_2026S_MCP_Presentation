@@ -1,0 +1,1 @@
+mcphost -m ollama:qwen3 --config ./mcp-servers.json
