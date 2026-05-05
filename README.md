@@ -4,17 +4,20 @@ A demonstration of the Model Context Protocol (MCP) integration with an inventor
 
 ## 📋 Overview
 
-This project consists of two main components:
+This project consists of three main components:
 
 - **McpServer**: A .NET 8 Web API that implements an MCP server, exposing inventory management tools
 - **McpClient**: A client configuration for connecting to the MCP server using `mcphost`
+- **DevDatabase**: Docker Compose setup for PostgreSQL with pgAdmin
 
 ## 🛠️ Tech Stack
 
 - **.NET 8** - Web API framework
 - **Entity Framework Core** - ORM with PostgreSQL
 - **ModelContextProtocol.AspNetCore** - MCP server implementation
-- **PostgreSQL** - Database
+- **PostgreSQL** - Database (Docker Compose)
+- **pgAdmin** - Database management UI
+- **Docker** - Containerization
 - **mcphost** - MCP client with Ollama (qwen3 model)
 
 ## 🚀 Features
@@ -35,9 +38,14 @@ The MCP server exposes three inventory management tools:
 │   ├── Repositories/      # Data access layer
 │   ├── Services/          # Business logic
 │   └── Tools/             # MCP tool definitions
-└── McpClient/             # MCP client configuration
-    ├── mcp-servers.json   # Server connection config
-    └── start-mcphost.sh   # Startup script
+├── McpClient/             # MCP client configuration
+│   ├── mcp-servers.json   # Server connection config
+│   └── start-mcphost.sh   # Startup script
+└── DevDatabase/           # PostgreSQL Docker setup
+    ├── docker-compose.yml # PostgreSQL + pgAdmin services
+    ├── create_database.sql # Database initialization
+    ├── start.sh          # Start containers
+    └── stop.sh           # Stop containers
 ```
 
 ## 🏃 Getting Started
