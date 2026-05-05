@@ -1,0 +1,41 @@
+services:
+  database:
+    image: postgres:16
+    container_name: database
+    ports:
+      - "5432:5432"
+    networks:
+      net:
+        ipv4_address: 172.20.0.3
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./create_database.sql:/docker-entrypoint-initdb.d/create_database.sql
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgAdmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin
+    ports:
+      - "8889:80"
+    volumes:
+      # preconfigured connections
+      - ./servers.json:/pgadmin4/servers.json
+    networks:
+      net:
+        ipv4_address: 172.20.0.2
+    depends_on:
+      - database
+networks:
+  net:
+    name: iai_mcp_server_net_dev
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.0.0/16"
+          gateway: 172.20.0.1
+volumes:
+  pgdata:
+    name: iai_mcp_server_pgdata_dev

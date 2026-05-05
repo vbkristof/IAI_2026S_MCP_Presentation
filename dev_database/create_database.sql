@@ -1,0 +1,2 @@
+CREATE
+DATABASE mcp_erp_demo;
