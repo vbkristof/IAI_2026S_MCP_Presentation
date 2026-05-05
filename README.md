@@ -53,9 +53,33 @@ The MCP server exposes three inventory management tools:
 ### Prerequisites
 
 - .NET 8 SDK
-- PostgreSQL
+- Docker & Docker Compose
 - mcphost CLI
 - Ollama with qwen3 model
+
+### Database Setup
+
+1. Navigate to the DevDatabase directory:
+   ```bash
+   cd DevDatabase
+   ```
+
+2. Start PostgreSQL and pgAdmin containers:
+   ```bash
+   ./start.sh
+   ```
+
+   This will:
+   - Start PostgreSQL 16 on port 5432
+   - Start pgAdmin on port 8889
+   - Create the `mcp_erp_demo` database automatically
+
+3. Access pgAdmin at `http://localhost:8889` (credentials: pgadmin@pgadmin.com / pgadmin)
+
+4. To stop the containers:
+   ```bash
+   ./stop.sh
+   ```
 
 ### Server Setup
 
